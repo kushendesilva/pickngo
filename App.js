@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import AppNavigator from "./src/navigation/AppNavigator";
-import { ThemeProvider } from "react-native-rapi-ui";
+import * as eva from "@eva-design/eva";
+import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
+import { EvaIconsPack } from "@ui-kitten/eva-icons";
+import { ThemeContext } from "./src/configs/Theme";
 
 export default function App() {
-  const images = [
-    require("./assets/icon.png"),
-    require("./assets/splash.png"),
-    require("./assets/login.png"),
-    require("./assets/register.png"),
-    require("./assets/forgot.png"),
-  ];
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+  };
 
   return (
-    <ThemeProvider images={images}>
-      <AppNavigator />
-    </ThemeProvider>
+    <>
+      <IconRegistry icons={EvaIconsPack} />
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ApplicationProvider {...eva} theme={eva[theme]}>
+          <AppNavigator />
+        </ApplicationProvider>
+      </ThemeContext.Provider>
+    </>
   );
 }

@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  ScrollView,
-  TouchableOpacity,
-  View,
-  KeyboardAvoidingView,
-  Image,
-} from "react-native";
+import { ScrollView, TouchableOpacity, View, Image } from "react-native";
 import {
   Layout,
   Text,
@@ -14,6 +8,7 @@ import {
   useTheme,
   themeColor,
 } from "react-native-rapi-ui";
+import Screen from "../../components/Screen";
 
 export default function ({ navigation }) {
   const { isDarkmode, setTheme } = useTheme();
@@ -21,7 +16,7 @@ export default function ({ navigation }) {
   const [loading, setLoading] = useState(false);
 
   return (
-    <KeyboardAvoidingView behavior="height" enabled style={{ flex: 1 }}>
+    <Screen>
       <Layout>
         <ScrollView
           contentContainerStyle={{
@@ -137,6 +132,6 @@ export default function ({ navigation }) {
           </View>
         </ScrollView>
       </Layout>
-    </KeyboardAvoidingView>
+    </Screen>
   );
 }

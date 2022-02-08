@@ -1,19 +1,31 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Layout, Text } from 'react-native-rapi-ui';
+import React, { useContext } from "react";
+import { Button, Layout } from "@ui-kitten/components";
+import { ThemeContext } from "../configs/Theme";
+import Screen from "../components/Screen";
 
 export default function ({ navigation }) {
-	return (
-		<Layout>
-			<View
-				style={{
-					flex: 1,
-					alignItems: 'center',
-					justifyContent: 'center',
-				}}
-			>
-				<Text>This is the Profile tab</Text>
-			</View>
-		</Layout>
-	);
+  const themeContext = useContext(ThemeContext);
+  return (
+    <Screen headerTitle="Profile">
+      <Layout
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Button onPress={themeContext.toggleTheme}>
+          {themeContext.theme == "dark" ? "Light Mode" : "Dark Mode"}
+        </Button>
+
+        <Button
+          onPress={() => {
+            navigation.navigate("Auth");
+          }}
+        >
+          Log Out
+        </Button>
+      </Layout>
+    </Screen>
+  );
 }

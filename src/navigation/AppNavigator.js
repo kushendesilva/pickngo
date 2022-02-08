@@ -2,13 +2,15 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  BottomNavigation,
+  BottomNavigationTab,
+  Icon,
+} from "@ui-kitten/components";
 
-import { useTheme, themeColor } from "react-native-rapi-ui";
-import TabBarIcon from "../components/utils/TabBarIcon";
-import TabBarText from "../components/utils/TabBarText";
 //Screens
 import Home from "../screens/Home";
-import SecondScreen from "../screens/SecondScreen";
+import DateTimePicker from "../screens/DateTimePicker";
 import Requests from "../screens/Requests";
 import Profile from "../screens/Profile";
 import Loading from "../screens/utils/Loading";
@@ -42,64 +44,40 @@ const Main = () => {
     >
       <MainStack.Screen name="Auth" component={Auth} />
       <MainStack.Screen name="MainTabs" component={MainTabs} />
-      <MainStack.Screen name="SecondScreen" component={SecondScreen} />
+      <MainStack.Screen name="DateTimePicker" component={DateTimePicker} />
     </MainStack.Navigator>
   );
 };
 
-const Tabs = createBottomTabNavigator();
-const MainTabs = () => {
-  const { isDarkmode } = useTheme();
+const BottomTabBar = ({ navigation, state }) => {
+  const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
+  const RequestIcon = (props) => <Icon {...props} name="clipboard-outline" />;
+  const ProfileIcon = (props) => <Icon {...props} name="person-outline" />;
   return (
-    <Tabs.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          borderTopColor: isDarkmode ? themeColor.dark100 : "#c0c0c0",
-          backgroundColor: isDarkmode ? themeColor.dark200 : "#ffffff",
-        },
-      }}
+    <BottomNavigation
+      selectedIndex={state.index}
+      onSelect={(index) => navigation.navigate(state.routeNames[index])}
     >
-      <Tabs.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarLabel: ({ focused }) => (
-            <TabBarText focused={focused} title="Home" />
-          ),
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={"md-home"} />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="Requests"
-        component={Requests}
-        options={{
-          tabBarLabel: ({ focused }) => (
-            <TabBarText focused={focused} title="Requests" />
-          ),
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={"newspaper"} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          tabBarLabel: ({ focused }) => (
-            <TabBarText focused={focused} title="Profile" />
-          ),
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={"person"} />
-          ),
-        }}
-      />
-    </Tabs.Navigator>
+      <BottomNavigationTab icon={HomeIcon} title="Home" />
+      <BottomNavigationTab icon={RequestIcon} title="Requests" />
+      <BottomNavigationTab icon={ProfileIcon} title="Profile" />
+    </BottomNavigation>
   );
 };
+
+const Tabs = createBottomTabNavigator();
+const MainTabs = () => (
+  <Tabs.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+    tabBar={(props) => <BottomTabBar {...props} />}
+  >
+    <Tabs.Screen name="Home" component={Home} />
+    <Tabs.Screen name="Requests" component={Requests} />
+    <Tabs.Screen name="Profile" component={Profile} />
+  </Tabs.Navigator>
+);
 
 export default () => {
   return (

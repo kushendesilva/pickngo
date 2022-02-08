@@ -1,19 +1,24 @@
 import React from "react";
-import { View, ActivityIndicator } from "react-native";
-import { Layout, themeColor } from "react-native-rapi-ui";
+import { ActivityIndicator } from "react-native";
+import { Layout, useTheme } from "@ui-kitten/components";
+import Screen from "../../components/Screen";
 
 export default function ({ navigation }) {
+  const theme = useTheme();
   return (
-    <Layout>
-      <View
+    <Screen>
+      <Layout
         style={{
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <ActivityIndicator size="large" color={themeColor.primary} />
-      </View>
-    </Layout>
+        <ActivityIndicator
+          size="large"
+          color={theme["color-primary-default"]}
+        />
+      </Layout>
+    </Screen>
   );
 }

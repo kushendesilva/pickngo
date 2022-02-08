@@ -4,7 +4,12 @@ import Screen from "../components/Screen";
 
 export default function ({ navigation }) {
   return (
-    <Screen headerTitle="Requests">
+    <Screen
+      backAction={() => {
+        navigation.goBack();
+      }}
+      headerTitle={"Date & Time Picker"}
+    >
       <Layout
         style={{
           flex: 1,
