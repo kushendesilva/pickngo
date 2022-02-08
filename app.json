@@ -3,7 +3,7 @@
     "name": "Pick & Go",
     "slug": "pickngo",
     "owner": "kushenthimira",
-    "version": "0.1.0-beta",
+    "version": "0.1.1-beta",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
