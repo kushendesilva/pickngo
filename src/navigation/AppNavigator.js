@@ -11,6 +11,13 @@ import {
 //Screens
 import Home from "../screens/Home";
 import DateTimePicker from "../screens/DateTimePicker";
+import Confirmation from "../screens/Confirmation";
+import DropLocation from "../screens/DropLocation";
+import Ongoing from "../screens/Ongoing";
+import PaymentMethods from "../screens/PaymentMethods";
+import ProfileInformation from "../screens/ProfileInformation";
+import Request from "../screens/Request";
+import TrackLocation from "../screens/TrackLocation";
 import Requests from "../screens/Requests";
 import Profile from "../screens/Profile";
 import Loading from "../screens/utils/Loading";
@@ -45,14 +52,24 @@ const Main = () => {
       <MainStack.Screen name="Auth" component={Auth} />
       <MainStack.Screen name="MainTabs" component={MainTabs} />
       <MainStack.Screen name="DateTimePicker" component={DateTimePicker} />
+      <MainStack.Screen name="Confirmation" component={Confirmation} />
+      <MainStack.Screen name="DropLocation" component={DropLocation} />
+      <MainStack.Screen name="Ongoing" component={Ongoing} />
+      <MainStack.Screen name="PaymentMethods" component={PaymentMethods} />
+      <MainStack.Screen
+        name="ProfileInformation"
+        component={ProfileInformation}
+      />
+      <MainStack.Screen name="Request" component={Request} />
+      <MainStack.Screen name="TrackLocation" component={TrackLocation} />
     </MainStack.Navigator>
   );
 };
 
 const BottomTabBar = ({ navigation, state }) => {
-  const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
-  const RequestIcon = (props) => <Icon {...props} name="clipboard-outline" />;
-  const ProfileIcon = (props) => <Icon {...props} name="person-outline" />;
+  const HomeIcon = (props) => <Icon {...props} name="home" />;
+  const RequestIcon = (props) => <Icon {...props} name="clipboard" />;
+  const ProfileIcon = (props) => <Icon {...props} name="person" />;
   return (
     <BottomNavigation
       selectedIndex={state.index}

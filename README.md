@@ -5,6 +5,15 @@
 
 - 📫 How to reach me **kushenthimira@gmail.com**
 
+<h3 align="left">Resources</h3>
+
+- 📱 Downloadable APK available <a href="https://github.com/kushenthimira/kitchennetwork/releases/download/v0.1.0-beta/kitchennetwork.apk" target="blank">**here**</a>
+
+|                                                                  |                                                                  |                                                                  |
+| :--------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: |
+| <img width="1604" alt="screenshot" src="/assets/previews/1.png"> | <img width="1604" alt="screenshot" src="/assets/previews/2.png"> | <img width="1604" alt="screenshot" src="/assets/previews/3.png"> |
+| <img width="1604" alt="screenshot" src="/assets/previews/4.png"> | <img width="1604" alt="screenshot" src="/assets/previews/5.png"> | <img width="1604" alt="screenshot" src="/assets/previews/6.png"> |
+
 <h3 align="left">Socials</h3>
 <p align="left">
 <a href="https://wa.me/94717827878" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/whatsapp.svg" alt="ciphernpc" height="30" width="40" /></a>

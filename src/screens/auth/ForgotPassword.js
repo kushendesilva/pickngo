@@ -1,137 +1,108 @@
 import React, { useState } from "react";
-import { ScrollView, TouchableOpacity, View, Image } from "react-native";
-import {
-  Layout,
-  Text,
-  TextInput,
-  Button,
-  useTheme,
-  themeColor,
-} from "react-native-rapi-ui";
+import { ScrollView, Image, TouchableWithoutFeedback } from "react-native";
+import { Button, Layout, Text, Icon, Input } from "@ui-kitten/components";
 import Screen from "../../components/Screen";
 
 export default function ({ navigation }) {
-  const { isDarkmode, setTheme } = useTheme();
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const toggleSecureEntry = () => {
+    setSecureTextEntry(!secureTextEntry);
+  };
+
+  const renderIcon = (props) => (
+    <TouchableWithoutFeedback onPress={toggleSecureEntry}>
+      <Icon {...props} name={secureTextEntry ? "eye-off" : "eye"} />
+    </TouchableWithoutFeedback>
+  );
 
   return (
     <Screen>
-      <Layout>
-        <ScrollView
-          contentContainerStyle={{
-            flexGrow: 1,
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+        }}
+      >
+        <Layout
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <View
+          <Image
+            resizeMode="contain"
             style={{
-              flex: 1,
-              justifyContent: "center",
+              height: 220,
+              width: 220,
+            }}
+            source={require("../../../assets/images/forgot.png")}
+          />
+        </Layout>
+        <Layout
+          style={{
+            flex: 3,
+            paddingHorizontal: 20,
+            paddingBottom: 20,
+          }}
+        >
+          <Text
+            style={{
+              textAlign: "center",
+              fontWeight: "bold",
+              marginBottom: 10,
+            }}
+            category="h5"
+          >
+            Forgot Password
+          </Text>
+          <Input
+            style={{ marginHorizontal: "2%", marginVertical: "1%" }}
+            size="large"
+            status="primary"
+            value={email}
+            label="Email"
+            placeholder="Your Email"
+            onChangeText={(nextValue) => setEmail(nextValue)}
+          />
+          <Button
+            size="large"
+            style={{
+              marginTop: 20,
+              marginHorizontal: 10,
+            }}
+            disabled={loading}
+            onPress={() => {
+              navigation.navigate("Login");
+            }}
+          >
+            {loading ? "Loading" : "Send email"}
+          </Button>
+
+          <Layout
+            style={{
+              flexDirection: "row",
               alignItems: "center",
-              backgroundColor: isDarkmode ? "#17171E" : themeColor.white100,
+              marginTop: 15,
+              justifyContent: "center",
             }}
           >
-            <Image
-              resizeMode="contain"
-              style={{
-                height: 220,
-                width: 220,
-              }}
-              source={require("../../../assets/forgot.png")}
-            />
-          </View>
-          <View
-            style={{
-              flex: 3,
-              paddingHorizontal: 20,
-              paddingBottom: 20,
-              backgroundColor: isDarkmode ? themeColor.dark : themeColor.white,
-            }}
-          >
-            <Text
-              size="h3"
-              fontWeight="bold"
-              style={{
-                alignSelf: "center",
-                padding: 30,
-              }}
-            >
-              Forgot Password
-            </Text>
-            <Text>Email</Text>
-            <TextInput
-              containerStyle={{ marginTop: 15 }}
-              placeholder="Enter your email"
-              value={email}
-              autoCapitalize="none"
-              autoCompleteType="off"
-              autoCorrect={false}
-              keyboardType="email-address"
-              onChangeText={(text) => setEmail(text)}
-            />
             <Button
-              text={loading ? "Loading" : "Send email"}
-              style={{
-                marginTop: 20,
-              }}
-              disabled={loading}
               onPress={() => {
                 navigation.navigate("Login");
               }}
-            />
-
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginTop: 15,
-                justifyContent: "center",
-              }}
+              appearance="ghost"
+              status="primary"
             >
-              <Text size="md">Already have an account?</Text>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("Login");
-                }}
-              >
-                <Text
-                  size="md"
-                  fontWeight="bold"
-                  style={{
-                    marginLeft: 5,
-                  }}
-                >
-                  Login here
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginTop: 30,
-                justifyContent: "center",
-              }}
-            >
-              <TouchableOpacity
-                onPress={() => {
-                  isDarkmode ? setTheme("light") : setTheme("dark");
-                }}
-              >
-                <Text
-                  size="md"
-                  fontWeight="bold"
-                  style={{
-                    marginLeft: 5,
-                  }}
-                >
-                  {isDarkmode ? "☀️ Light theme" : "🌑 Dark theme"}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </ScrollView>
-      </Layout>
+              <Text size="md">Already have an account? </Text>
+              Login here
+            </Button>
+          </Layout>
+        </Layout>
+      </ScrollView>
     </Screen>
   );
 }

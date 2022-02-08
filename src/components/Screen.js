@@ -13,7 +13,7 @@ import RenderIf from "../configs/RenderIf";
 function Screen({ children, backAction, headerTitle }) {
   const themeContext = useContext(ThemeContext);
 
-  const BackIcon = (props) => <Icon {...props} name="arrow-back" />;
+  const BackIcon = (props) => <Icon {...props} name="arrow-ios-back" />;
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={backAction} />
   );
@@ -23,7 +23,7 @@ function Screen({ children, backAction, headerTitle }) {
       <Layout style={{ flex: 1 }}>
         <TopNavigation
           accessoryLeft={BackAction}
-          title={(evaProps) => <Text {...evaProps}>{headerTitle}</Text>}
+          title={() => <Text>{headerTitle}</Text>}
         />
         {RenderIf(
           themeContext.theme == "light",
@@ -42,7 +42,12 @@ function Screen({ children, backAction, headerTitle }) {
     return (
       <Layout style={{ flex: 1 }}>
         <TopNavigation
-          title={(evaProps) => <Text {...evaProps}>{headerTitle}</Text>}
+          alignment="center"
+          title={() => (
+            <Text category="h6" style={{ fontWeight: "bold" }}>
+              {headerTitle}
+            </Text>
+          )}
         />
         {RenderIf(
           themeContext.theme == "light",
