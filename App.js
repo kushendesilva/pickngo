@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "intl";
+import "intl/locale-data/jsonp/en";
 import AppNavigator from "./src/navigation/AppNavigator";
 import * as eva from "@eva-design/eva";
 import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";

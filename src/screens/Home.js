@@ -1,12 +1,8 @@
-import React, { useContext } from "react";
-import { Button, Text, Layout, useTheme } from "@ui-kitten/components";
-import { ThemeContext } from "../configs/Theme";
+import React from "react";
+import { Button, Layout } from "@ui-kitten/components";
 import Screen from "../components/Screen";
 
 export default function ({ navigation }) {
-  const theme = useTheme();
-  const themeContext = useContext(ThemeContext);
-
   return (
     <Screen headerTitle="Home">
       <Layout
@@ -17,7 +13,6 @@ export default function ({ navigation }) {
         }}
       >
         <Button
-          text="Pick Date & Time"
           onPress={() => {
             navigation.navigate("DateTimePicker");
           }}

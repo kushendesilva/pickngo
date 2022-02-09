@@ -11,14 +11,22 @@ export default function ({ navigation }) {
         style={{
           flex: 1,
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-evenly",
         }}
       >
-        <Button onPress={themeContext.toggleTheme}>
+        <Button
+          onPress={() => {
+            navigation.navigate("PaymentMethods");
+          }}
+        >
+          Payment Methods
+        </Button>
+        <Button status="basic" onPress={themeContext.toggleTheme}>
           {themeContext.theme == "dark" ? "Light Mode" : "Dark Mode"}
         </Button>
 
         <Button
+          status="danger"
           onPress={() => {
             navigation.navigate("Auth");
           }}
