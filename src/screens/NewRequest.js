@@ -34,7 +34,7 @@ export default function ({ navigation }) {
       backAction={() => {
         navigation.goBack();
       }}
-      headerTitle={"Pickup Information"}
+      headerTitle={"Request Information"}
     >
       <Layout
         style={{

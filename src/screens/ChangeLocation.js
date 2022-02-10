@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
-import { Layout } from "@ui-kitten/components";
+import { Layout, Button } from "@ui-kitten/components";
 import Screen from "../components/Screen";
 
 export default function ({ navigation }) {
@@ -10,7 +10,7 @@ export default function ({ navigation }) {
       backAction={() => {
         navigation.goBack();
       }}
-      headerTitle={"Track Delivery"}
+      headerTitle={"Pickup Location"}
     >
       <Layout style={{ flex: 1 }}>
         <MapView
@@ -28,10 +28,17 @@ export default function ({ navigation }) {
               latitude: 37.78825,
               longitude: -122.4324,
             }}
-            image={require("../../assets/images/truck.png")}
           />
         </MapView>
       </Layout>
+      <Button
+        style={{ margin: 20 }}
+        onPress={() => {
+          navigation.navigate("MainTabs");
+        }}
+      >
+        Confirm
+      </Button>
     </Screen>
   );
 }

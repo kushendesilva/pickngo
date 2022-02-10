@@ -26,9 +26,17 @@ export default function ({ navigation }) {
         }}
       />
       <NavButton
+        themeChanger
         icon={themeContext.theme == "dark" ? "sun" : "moon"}
         title={themeContext.theme == "dark" ? "Light Mode" : "Dark Mode"}
         onPress={themeContext.toggleTheme}
+      />
+      <NavButton
+        icon="question-mark-circle"
+        title="Help"
+        onPress={() => {
+          navigation.navigate("Help");
+        }}
       />
     </Screen>
   );

@@ -10,7 +10,7 @@ import {
 
 //Screens
 import Home from "../screens/Home";
-import PickupInfo from "../screens/PickupInfo";
+import NewRequest from "../screens/NewRequest";
 import Confirmation from "../screens/Confirmation";
 import Ongoing from "../screens/Ongoing";
 import PaymentMethods from "../screens/PaymentMethods";
@@ -18,8 +18,10 @@ import NewPayment from "../screens/NewPayment";
 import ProfileInformation from "../screens/ProfileInformation";
 import Request from "../screens/Request";
 import TrackLocation from "../screens/TrackLocation";
+import ChangeLocation from "../screens/ChangeLocation";
 import Requests from "../screens/Requests";
 import Profile from "../screens/Profile";
+import Help from "../screens/Help";
 import Loading from "../screens/utils/Loading";
 // Auth screens
 import Login from "../screens/auth/Login";
@@ -51,17 +53,19 @@ const Main = () => {
     >
       <MainStack.Screen name="Auth" component={Auth} />
       <MainStack.Screen name="MainTabs" component={MainTabs} />
-      <MainStack.Screen name="PickupInfo" component={PickupInfo} />
+      <MainStack.Screen name="NewRequest" component={NewRequest} />
       <MainStack.Screen name="Confirmation" component={Confirmation} />
       <MainStack.Screen name="Ongoing" component={Ongoing} />
       <MainStack.Screen name="PaymentMethods" component={PaymentMethods} />
       <MainStack.Screen name="NewPayment" component={NewPayment} />
+      <MainStack.Screen name="Help" component={Help} />
       <MainStack.Screen
         name="ProfileInformation"
         component={ProfileInformation}
       />
       <MainStack.Screen name="Request" component={Request} />
       <MainStack.Screen name="TrackLocation" component={TrackLocation} />
+      <MainStack.Screen name="ChangeLocation" component={ChangeLocation} />
     </MainStack.Navigator>
   );
 };

@@ -1,19 +1,31 @@
 import React from "react";
-import { Layout, Text } from "@ui-kitten/components";
 import Screen from "../components/Screen";
+import { RequestCard } from "../components/RequestCard";
 
 export default function ({ navigation }) {
   return (
     <Screen headerTitle="Requests">
-      <Layout
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
+      <RequestCard
+        id="1015454"
+        date="12/03/2022"
+        onPress={() => {
+          navigation.navigate("Request");
         }}
-      >
-        <Text>This is the Requests tab</Text>
-      </Layout>
+      />
+      <RequestCard
+        id="1015455"
+        date="20/03/2022"
+        onPress={() => {
+          navigation.navigate("Request");
+        }}
+      />
+      <RequestCard
+        id="1015456"
+        date="21/03/2022"
+        onPress={() => {
+          navigation.navigate("Request");
+        }}
+      />
     </Screen>
   );
 }
