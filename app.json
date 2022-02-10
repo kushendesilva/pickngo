@@ -3,7 +3,7 @@
     "name": "Pick & Go",
     "slug": "pickngo",
     "owner": "kushenthimira",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -16,15 +16,18 @@
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
-      "package": "com.cipher.pickngo",
+      "package": "npc.cipher.pickngo",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyD87ToWqo4Y8vIjlgURucGldvbD5h44l3k" }
       }
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.cipher.pickngo"
+      "bundleIdentifier": "npc.cipher.pickngo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
