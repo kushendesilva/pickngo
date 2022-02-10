@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "intl";
-import "intl/locale-data/jsonp/en";
+// import "intl";
+// import "intl/locale-data/jsonp/en";
+import { default as colors } from "./src/configs/Colors.json";
 import AppNavigator from "./src/navigation/AppNavigator";
 import * as eva from "@eva-design/eva";
 import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
@@ -19,7 +20,7 @@ export default function App() {
     <>
       <IconRegistry icons={EvaIconsPack} />
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
-        <ApplicationProvider {...eva} theme={eva[theme]}>
+        <ApplicationProvider {...eva} theme={{ ...eva[theme], ...colors }}>
           <AppNavigator />
         </ApplicationProvider>
       </ThemeContext.Provider>

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Button, Layout } from "@ui-kitten/components";
 import { ThemeContext } from "../configs/Theme";
 import Screen from "../components/Screen";
 import { ProfileCard } from "../components/ProfileCard";

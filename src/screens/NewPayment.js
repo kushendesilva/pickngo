@@ -1,10 +1,13 @@
-import React from "react";
-import { Layout } from "@ui-kitten/components";
+import React, { useContext } from "react";
+import { Layout, useTheme } from "@ui-kitten/components";
 import Screen from "../components/Screen";
-import { StyleSheet } from "react-native";
 import { CreditCardInput } from "react-native-credit-card-input-view";
+import { ThemeContext } from "../configs/Theme";
 
 export default function ({ navigation }) {
+  const themeContext = useContext(ThemeContext);
+  const theme = useTheme();
+
   return (
     <Screen
       backAction={() => {
@@ -12,39 +15,35 @@ export default function ({ navigation }) {
       }}
       headerTitle={"New Payment"}
     >
-      <Layout style={s.container}>
+      <Layout style={{ marginTop: 80 }}>
         <CreditCardInput
           autoFocus
           requiresName
           requiresCVC
           cardScale={1.0}
-          labelStyle={s.label}
-          inputStyle={s.input}
-          validColor={"black"}
-          invalidColor={"red"}
-          placeholderColor={"darkgray"}
+          labelStyle={{
+            color:
+              themeContext.theme == "dark"
+                ? theme["color-info-100"]
+                : theme["color-info-default"],
+            fontSize: 12,
+          }}
+          inputStyle={{
+            fontSize: 16,
+            color:
+              themeContext.theme == "dark"
+                ? theme["color-info-100"]
+                : theme["color-info-default"],
+          }}
+          validColor={
+            themeContext.theme == "dark"
+              ? theme["color-info-100"]
+              : theme["color-info-default"]
+          }
+          invalidColor={theme["color-danger-default"]}
+          placeholderColor={theme["color-info-400"]}
         />
       </Layout>
     </Screen>
   );
 }
-
-const s = StyleSheet.create({
-  switch: {
-    alignSelf: "center",
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  container: {
-    backgroundColor: "#F5F5F5",
-    marginTop: 60,
-  },
-  label: {
-    color: "black",
-    fontSize: 12,
-  },
-  input: {
-    fontSize: 16,
-    color: "black",
-  },
-});

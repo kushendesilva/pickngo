@@ -10,9 +10,8 @@ import {
 
 //Screens
 import Home from "../screens/Home";
-import DateTimePicker from "../screens/DateTimePicker";
+import PickupInfo from "../screens/PickupInfo";
 import Confirmation from "../screens/Confirmation";
-import DropLocation from "../screens/DropLocation";
 import Ongoing from "../screens/Ongoing";
 import PaymentMethods from "../screens/PaymentMethods";
 import NewPayment from "../screens/NewPayment";
@@ -52,9 +51,8 @@ const Main = () => {
     >
       <MainStack.Screen name="Auth" component={Auth} />
       <MainStack.Screen name="MainTabs" component={MainTabs} />
-      <MainStack.Screen name="DateTimePicker" component={DateTimePicker} />
+      <MainStack.Screen name="PickupInfo" component={PickupInfo} />
       <MainStack.Screen name="Confirmation" component={Confirmation} />
-      <MainStack.Screen name="DropLocation" component={DropLocation} />
       <MainStack.Screen name="Ongoing" component={Ongoing} />
       <MainStack.Screen name="PaymentMethods" component={PaymentMethods} />
       <MainStack.Screen name="NewPayment" component={NewPayment} />

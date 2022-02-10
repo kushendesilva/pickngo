@@ -1,14 +1,15 @@
-import React from "react";
-import { Button, Text, Card, Icon, Layout } from "@ui-kitten/components";
+import React, { useContext } from "react";
+import { Text, Card, Icon, Layout, useTheme } from "@ui-kitten/components";
+import { ThemeContext } from "../configs/Theme";
 
 export const NavButton = ({ icon, title, onPress, style }) => {
-  const ArrowIcon = (props) => (
-    <Icon {...props} name="arrow-ios-forward-outline" />
-  );
+  const themeContext = useContext(ThemeContext);
+  const theme = useTheme();
+
   return (
     <Card
       onPress={onPress}
-      style={{ marginHorizontal: "3%", marginVertical: "1%" }}
+      style={{ marginHorizontal: "3%", marginVertical: "1%", padding: "2%" }}
     >
       <Layout>
         <Layout
@@ -27,21 +28,27 @@ export const NavButton = ({ icon, title, onPress, style }) => {
               alignItems: "center",
             }}
           >
-            <Button
-              onPress={onPress}
-              accessoryRight={<Icon name={icon} />}
-              status="primary"
-              appearance="ghost"
+            <Icon
+              style={{ width: 20, height: 20, marginRight: 20 }}
+              fill={
+                themeContext.theme == "light"
+                  ? theme["color-info-default"]
+                  : theme["color-info-100"]
+              }
+              name={icon}
             />
             <Text category="h6" style={{ fontWeight: "bold" }}>
               {title}
             </Text>
           </Layout>
-          <Button
-            onPress={onPress}
-            accessoryRight={ArrowIcon}
-            status="primary"
-            appearance="ghost"
+          <Icon
+            style={{ width: 20, height: 20 }}
+            fill={
+              themeContext.theme == "light"
+                ? theme["color-info-default"]
+                : theme["color-info-100"]
+            }
+            name="arrow-ios-forward"
           />
         </Layout>
       </Layout>

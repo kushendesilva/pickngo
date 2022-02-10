@@ -14,7 +14,7 @@ export default function ({ navigation }) {
       >
         <Button
           onPress={() => {
-            navigation.navigate("DateTimePicker");
+            navigation.navigate("PickupInfo");
           }}
         >
           Pick Date

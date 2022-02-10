@@ -1,12 +1,23 @@
 import React from "react";
-import { Layout, Button, Icon, Card, Text } from "@ui-kitten/components";
+import {
+  Layout,
+  Button,
+  Icon,
+  Card,
+  Text,
+  useTheme,
+} from "@ui-kitten/components";
 
 export const ProfileCard = ({ email, onPress, onEditPress, name }) => {
   const LogoutIcon = (props) => <Icon {...props} name="log-out" />;
   const EditIcon = (props) => <Icon {...props} name="edit-2" />;
-
+  const theme = useTheme();
   return (
-    <Card status="basic" style={{ marginHorizontal: "3%", marginBottom: "1%" }}>
+    <Card
+      status="basic"
+      style={{ marginHorizontal: "3%", marginBottom: "1%" }}
+      disabled
+    >
       <Layout
         style={{
           alignItems: "center",
@@ -40,7 +51,7 @@ export const ProfileCard = ({ email, onPress, onEditPress, name }) => {
         >
           <Icon
             style={{ width: 40, height: 40 }}
-            fill="#262e48"
+            fill={theme["color-info-default"]}
             name="person"
           />
         </Layout>
