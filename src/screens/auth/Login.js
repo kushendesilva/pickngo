@@ -31,8 +31,8 @@ export default function ({ navigation }) {
     </TouchableWithoutFeedback>
   );
   const MenuIcon = (props) => <Icon {...props} name="more-vertical" />;
-  const DarkIcon = (props) => <Icon {...props} name="moon-outline" />;
-  const LightIcon = (props) => <Icon {...props} name="sun-outline" />;
+  const DarkIcon = (props) => <Icon {...props} name="moon" />;
+  const LightIcon = (props) => <Icon {...props} name="sun" />;
 
   const [menuVisible, setMenuVisible] = useState(false);
 

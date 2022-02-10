@@ -2,38 +2,35 @@ import React, { useContext } from "react";
 import { Button, Layout } from "@ui-kitten/components";
 import { ThemeContext } from "../configs/Theme";
 import Screen from "../components/Screen";
+import { ProfileCard } from "../components/ProfileCard";
+import { NavButton } from "../components/NavButton";
 
 export default function ({ navigation }) {
   const themeContext = useContext(ThemeContext);
   return (
     <Screen headerTitle="Profile">
-      <Layout
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "space-evenly",
+      <ProfileCard
+        email="admin@pickngo.com"
+        onPress={() => {
+          navigation.navigate("Auth");
         }}
-      >
-        <Button
-          onPress={() => {
-            navigation.navigate("PaymentMethods");
-          }}
-        >
-          Payment Methods
-        </Button>
-        <Button status="basic" onPress={themeContext.toggleTheme}>
-          {themeContext.theme == "dark" ? "Light Mode" : "Dark Mode"}
-        </Button>
-
-        <Button
-          status="danger"
-          onPress={() => {
-            navigation.navigate("Auth");
-          }}
-        >
-          Log Out
-        </Button>
-      </Layout>
+        onEditPress={() => {
+          navigation.navigate("ProfileInformation");
+        }}
+        name="Admin"
+      />
+      <NavButton
+        icon="credit-card"
+        title="Payment Methods"
+        onPress={() => {
+          navigation.navigate("PaymentMethods");
+        }}
+      />
+      <NavButton
+        icon={themeContext.theme == "dark" ? "sun" : "moon"}
+        title={themeContext.theme == "dark" ? "Light Mode" : "Dark Mode"}
+        onPress={themeContext.toggleTheme}
+      />
     </Screen>
   );
 }

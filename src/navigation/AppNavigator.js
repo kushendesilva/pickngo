@@ -15,6 +15,7 @@ import Confirmation from "../screens/Confirmation";
 import DropLocation from "../screens/DropLocation";
 import Ongoing from "../screens/Ongoing";
 import PaymentMethods from "../screens/PaymentMethods";
+import NewPayment from "../screens/NewPayment";
 import ProfileInformation from "../screens/ProfileInformation";
 import Request from "../screens/Request";
 import TrackLocation from "../screens/TrackLocation";
@@ -56,6 +57,7 @@ const Main = () => {
       <MainStack.Screen name="DropLocation" component={DropLocation} />
       <MainStack.Screen name="Ongoing" component={Ongoing} />
       <MainStack.Screen name="PaymentMethods" component={PaymentMethods} />
+      <MainStack.Screen name="NewPayment" component={NewPayment} />
       <MainStack.Screen
         name="ProfileInformation"
         component={ProfileInformation}
