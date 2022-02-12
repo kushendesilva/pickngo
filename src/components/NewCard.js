@@ -1,12 +1,5 @@
 import React, { useContext } from "react";
-import {
-  Text,
-  Card,
-  Icon,
-  Layout,
-  useTheme,
-  Button,
-} from "@ui-kitten/components";
+import { Text, Card, useTheme, Button } from "@ui-kitten/components";
 import { ThemeContext } from "../configs/Theme";
 
 export const NewCard = ({ onPress }) => {

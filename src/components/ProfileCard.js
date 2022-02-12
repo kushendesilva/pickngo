@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Layout,
   Button,
@@ -8,8 +8,10 @@ import {
   useTheme,
 } from "@ui-kitten/components";
 import { Pressable } from "react-native";
+import { ThemeContext } from "../configs/Theme";
 
 export const ProfileCard = ({ email, onPress, onEditPress, name }) => {
+  const themeContext = useContext(ThemeContext);
   const LogoutIcon = (props) => <Icon {...props} name="log-out" />;
   const theme = useTheme();
 
@@ -32,7 +34,7 @@ export const ProfileCard = ({ email, onPress, onEditPress, name }) => {
             style={{
               flexDirection: "row",
               justifyContent: "space-evenly",
-              backgroundColor: "#edf1f7",
+              backgroundColor: theme["color-info-100"],
               padding: 10,
               borderRadius: 25,
               elevation: 2,
@@ -44,17 +46,29 @@ export const ProfileCard = ({ email, onPress, onEditPress, name }) => {
               fill={theme["color-info-default"]}
               name="person"
             />
-            <Icon
+            <Layout
               style={{
-                width: 15,
-                height: 15,
+                backgroundColor:
+                  themeContext.theme == "light"
+                    ? theme["color-info-default"]
+                    : theme["color-info-400"],
+                padding: 5,
+                borderRadius: 25,
+                elevation: 2,
                 position: "absolute",
                 right: -3,
                 top: -3,
               }}
-              fill={theme["color-info-default"]}
-              name="edit-2"
-            />
+            >
+              <Icon
+                style={{
+                  width: 15,
+                  height: 15,
+                }}
+                fill={theme["color-info-100"]}
+                name="edit-2"
+              />
+            </Layout>
           </Pressable>
           <Layout style={{ justifyContent: "center" }}>
             <Text style={{ margin: "1%", fontWeight: "bold" }} category="h6">
