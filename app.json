@@ -17,6 +17,7 @@
     "assetBundlePatterns": ["**/*"],
     "android": {
       "package": "npc.cipher.pickngo",
+      "permissions": ["LOCATION"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"

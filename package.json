@@ -29,7 +29,9 @@
     "react-native-screens": "~3.10.1",
     "react-native-svg": "12.1.1",
     "react-native-web": "0.17.1",
-    "@react-native-community/datetimepicker": "4.0.0"
+    "@react-native-community/datetimepicker": "4.0.0",
+    "expo-location": "~14.0.1",
+    "expo-constants": "~13.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
