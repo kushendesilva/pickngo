@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { View, TouchableNativeFeedback } from "react-native";
-import { Input, Button, Icon } from "@ui-kitten/components";
+import { TouchableNativeFeedback } from "react-native";
+import { Input, Button, Icon, Layout } from "@ui-kitten/components";
 import RenderIf from "../configs/RenderIf";
 import Screen from "../components/Screen";
 
@@ -32,7 +32,7 @@ export default function ({ navigation }) {
       }}
       headerTitle={"Account Information"}
     >
-      <View style={{ padding: 10 }}>
+      <Layout style={{ padding: 10 }}>
         <Input
           style={{ marginHorizontal: "2%", marginVertical: "1%" }}
           size="large"
@@ -82,7 +82,7 @@ export default function ({ navigation }) {
         )}
         {RenderIf(
           !visibility,
-          <View
+          <Layout
             style={{
               flexDirection: "row",
               justifyContent: "space-evenly",
@@ -109,9 +109,9 @@ export default function ({ navigation }) {
             >
               Update
             </Button>
-          </View>
+          </Layout>
         )}
-      </View>
+      </Layout>
     </Screen>
   );
 }

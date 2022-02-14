@@ -1,10 +1,59 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
+import * as Location from "expo-location";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
-import { Layout, Button } from "@ui-kitten/components";
+import { Layout, Button, Text } from "@ui-kitten/components";
 import Screen from "../components/Screen";
 
 export default function ({ navigation }) {
+  const [location, setLocation] = useState(null);
+  const [address, setAddress] = useState("Loading...");
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [mapRegion, setMapRegion] = useState(null);
+  const [mapMarker, setMapMarker] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+  });
+  let apiKey = "AIzaSyD87ToWqo4Y8vIjlgURucGldvbD5h44l3k";
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+      Location.setGoogleApiKey(apiKey);
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+      setMapRegion({
+        longitude: location.coords.longitude,
+        latitude: location.coords.latitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      });
+      setMapMarker({
+        longitude: location.coords.longitude,
+        latitude: location.coords.latitude,
+      });
+      let address = await Location.reverseGeocodeAsync({
+        longitude: location.coords.longitude,
+        latitude: location.coords.latitude,
+      });
+      address.find((place) => {
+        setAddress(
+          "No." + place.streetNumber + ", " + place.street + ", " + place.city
+        );
+      });
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
   return (
     <Screen
       backAction={() => {
@@ -12,23 +61,19 @@ export default function ({ navigation }) {
       }}
       headerTitle={"Pickup Location"}
     >
+      <Text
+        category="label"
+        style={{ fontWeight: "bold", textAlign: "center", marginBottom: 10 }}
+      >
+        {address}
+      </Text>
       <Layout style={{ flex: 1 }}>
         <MapView
           provider={PROVIDER_GOOGLE}
           style={{ ...StyleSheet.absoluteFillObject }}
-          initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
+          initialRegion={mapRegion}
         >
-          <Marker
-            coordinate={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-            }}
-          />
+          <Marker coordinate={mapMarker} />
         </MapView>
       </Layout>
       <Button
@@ -42,58 +87,3 @@ export default function ({ navigation }) {
     </Screen>
   );
 }
-
-// import React, { useState, useEffect } from 'react';
-// import { Platform, Text, View, StyleSheet } from 'react-native';
-// import Constants from 'expo-constants';
-// import * as Location from 'expo-location';
-
-// export default function App() {
-//   const [location, setLocation] = useState(null);
-//   const [errorMsg, setErrorMsg] = useState(null);
-
-//   useEffect(() => {
-//     (async () => {
-//       if (Platform.OS === 'android' && !Constants.isDevice) {
-//         setErrorMsg(
-//           'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
-//         );
-//         return;
-//       }
-//       let { status } = await Location.requestForegroundPermissionsAsync();
-//       if (status !== 'granted') {
-//         setErrorMsg('Permission to access location was denied');
-//         return;
-//       }
-
-//       let location = await Location.getCurrentPositionAsync({});
-//       setLocation(location);
-//     })();
-//   }, []);
-
-//   let text = 'Waiting..';
-//   if (errorMsg) {
-//     text = errorMsg;
-//   } else if (location) {
-//     text = JSON.stringify(location);
-//   }
-
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.paragraph}>{text}</Text>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     padding: 20,
-//   },
-//   paragraph: {
-//     fontSize: 18,
-//     textAlign: 'center',
-//   },
-// });

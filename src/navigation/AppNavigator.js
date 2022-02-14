@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { initializeApp, getApps } from "firebase/app";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -7,6 +8,7 @@ import {
   BottomNavigationTab,
   Icon,
 } from "@ui-kitten/components";
+import { AuthContext } from "../provider/AuthProvider";
 
 //Screens
 import Home from "../screens/Home";
@@ -28,6 +30,20 @@ import Login from "../screens/auth/Login";
 import Register from "../screens/auth/Register";
 import ForgotPassword from "../screens/auth/ForgotPassword";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyATuMyVrC06QAh8FoO2H4iu8AFgbGd5jys",
+  authDomain: "pickandgo-app.firebaseapp.com",
+  databaseURL: "https://pickandgo-app.firebaseio.com",
+  projectId: "pickandgo-app",
+  storageBucket: "pickandgo-app.appspot.com",
+  messagingSenderId: "1048515395386",
+  appId: "1:1048515395386:android:22622d3d2a32a4ef31da03",
+};
+
+if (getApps().length === 0) {
+  initializeApp(firebaseConfig);
+}
+
 const AuthStack = createNativeStackNavigator();
 const Auth = () => {
   return (
@@ -38,6 +54,7 @@ const Auth = () => {
     >
       <AuthStack.Screen name="Login" component={Login} />
       <AuthStack.Screen name="Register" component={Register} />
+
       <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
     </AuthStack.Navigator>
   );
@@ -51,7 +68,6 @@ const Main = () => {
         headerShown: false,
       }}
     >
-      <MainStack.Screen name="Auth" component={Auth} />
       <MainStack.Screen name="MainTabs" component={MainTabs} />
       <MainStack.Screen name="NewRequest" component={NewRequest} />
       <MainStack.Screen name="Confirmation" component={Confirmation} />
@@ -101,11 +117,14 @@ const MainTabs = () => (
 );
 
 export default () => {
+  const context = useContext(AuthContext);
+  const user = context.user;
+
   return (
     <NavigationContainer>
-      {/* <Loading /> */}
-      {/* <Auth /> */}
-      <Main />
+      {user == null && <Loading />}
+      {user == false && <Auth />}
+      {user == true && <Main />}
     </NavigationContainer>
   );
 };

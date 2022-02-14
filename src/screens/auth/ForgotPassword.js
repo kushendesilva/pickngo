@@ -1,23 +1,27 @@
 import React, { useState } from "react";
-import { ScrollView, Image, TouchableWithoutFeedback } from "react-native";
-import { Button, Layout, Text, Icon, Input } from "@ui-kitten/components";
+import { ScrollView, Image } from "react-native";
+import { Button, Layout, Text, Input } from "@ui-kitten/components";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import Screen from "../../components/Screen";
 
 export default function ({ navigation }) {
+  const auth = getAuth();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [secureTextEntry, setSecureTextEntry] = useState(true);
 
-  const toggleSecureEntry = () => {
-    setSecureTextEntry(!secureTextEntry);
-  };
-
-  const renderIcon = (props) => (
-    <TouchableWithoutFeedback onPress={toggleSecureEntry}>
-      <Icon {...props} name={secureTextEntry ? "eye-off" : "eye"} />
-    </TouchableWithoutFeedback>
-  );
+  async function reset() {
+    setLoading(true);
+    await sendPasswordResetEmail(auth, email)
+      .then(function () {
+        setLoading(false);
+        navigation.navigate("Login");
+        alert("Your password reset link has been sent to your email");
+      })
+      .catch(function (error) {
+        setLoading(false);
+        alert(error);
+      });
+  }
 
   return (
     <Screen>
@@ -76,7 +80,7 @@ export default function ({ navigation }) {
             }}
             disabled={loading}
             onPress={() => {
-              navigation.navigate("Login");
+              reset();
             }}
           >
             {loading ? "Loading" : "Send email"}

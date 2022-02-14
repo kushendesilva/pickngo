@@ -1,17 +1,19 @@
 import React, { useContext } from "react";
+import { getAuth, signOut } from "firebase/auth";
 import { ThemeContext } from "../configs/Theme";
 import Screen from "../components/Screen";
 import { ProfileCard } from "../components/ProfileCard";
 import { NavButton } from "../components/NavButton";
 
 export default function ({ navigation }) {
+  const auth = getAuth();
   const themeContext = useContext(ThemeContext);
   return (
     <Screen headerTitle="Profile">
       <ProfileCard
         email="admin@pickngo.com"
         onPress={() => {
-          navigation.navigate("Auth");
+          signOut(auth);
         }}
         onEditPress={() => {
           navigation.navigate("ProfileInformation");

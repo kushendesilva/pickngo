@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { ScrollView, Image, TouchableWithoutFeedback } from "react-native";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {
   Button,
   Layout,
@@ -16,10 +17,25 @@ import { ThemeContext } from "../../configs/Theme";
 
 export default function ({ navigation }) {
   const themeContext = useContext(ThemeContext);
+  const auth = getAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  async function login() {
+    setLoading(true);
+    await signInWithEmailAndPassword(auth, email, password).catch(function (
+      error
+    ) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+      setLoading(false);
+      alert(errorMessage);
+    });
+  }
 
   const toggleSecureEntry = () => {
     setSecureTextEntry(!secureTextEntry);
@@ -132,7 +148,7 @@ export default function ({ navigation }) {
             }}
             disabled={loading}
             onPress={() => {
-              navigation.navigate("MainTabs");
+              login();
             }}
           >
             {loading ? "Loading" : "Login"}
