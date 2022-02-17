@@ -7,7 +7,7 @@
 
 <h3 align="left">Resources</h3>
 
-- 📱 Downloadable APK available <a href="https://github.com/kushenthimira/pickngo/releases/download/v0.2.1/pickngo.apk" target="blank">**here**</a>
+- 📱 Downloadable APK available <a href="https://github.com/kushenthimira/pickngo/releases/download/v0.3.0/pickngo.apk" target="blank">**here**</a>
 
 |                                                                   |                                                                   |                                                                   |
 | :---------------------------------------------------------------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
@@ -15,6 +15,7 @@
 | <img width="1604" alt="screenshot" src="/assets/previews/4.png">  | <img width="1604" alt="screenshot" src="/assets/previews/5.png">  | <img width="1604" alt="screenshot" src="/assets/previews/6.png">  |
 | <img width="1604" alt="screenshot" src="/assets/previews/7.png">  | <img width="1604" alt="screenshot" src="/assets/previews/8.png">  | <img width="1604" alt="screenshot" src="/assets/previews/9.png">  |
 | <img width="1604" alt="screenshot" src="/assets/previews/10.png"> | <img width="1604" alt="screenshot" src="/assets/previews/11.png"> | <img width="1604" alt="screenshot" src="/assets/previews/12.png"> |
+| <img width="1604" alt="screenshot" src="/assets/previews/13.png"> | <img width="1604" alt="screenshot" src="/assets/previews/14.png"> | <img width="1604" alt="screenshot" src="/assets/previews/15.png"> |
 
 <h3 align="left">Socials</h3>
 <p align="left">

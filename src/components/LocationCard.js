@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Text,
   Card,
@@ -8,16 +8,25 @@ import {
   Button,
 } from "@ui-kitten/components";
 
-export const LocationCard = ({ location, onPress, style }) => {
+export const LocationCard = ({
+  title = "Pickup Location",
+  location,
+  onPress,
+  style,
+  icon = "pin",
+}) => {
   const theme = useTheme();
   return (
     <Card
       disabled
-      style={{
-        marginHorizontal: "5%",
-        marginVertical: "1%",
-        backgroundColor: theme["color-info-100"],
-      }}
+      style={[
+        style,
+        {
+          marginHorizontal: "5%",
+          marginVertical: "1%",
+          backgroundColor: theme["color-info-100"],
+        },
+      ]}
     >
       <Layout
         style={{
@@ -25,15 +34,12 @@ export const LocationCard = ({ location, onPress, style }) => {
         }}
       >
         <Layout
-          style={
-            (style,
-            {
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              backgroundColor: theme["color-info-100"],
-            })
-          }
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: theme["color-info-100"],
+          }}
         >
           <Layout
             style={{
@@ -46,7 +52,7 @@ export const LocationCard = ({ location, onPress, style }) => {
             <Icon
               style={{ width: 25, height: 25, marginRight: 25 }}
               fill={theme["color-info-default"]}
-              name="pin"
+              name={icon}
             />
             <Layout
               style={{
@@ -61,7 +67,7 @@ export const LocationCard = ({ location, onPress, style }) => {
                   color: theme["color-info-default"],
                 }}
               >
-                Pickup Location
+                {title}
               </Text>
               <Text
                 style={{ color: theme["color-info-default"] }}

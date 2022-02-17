@@ -1,5 +1,4 @@
 import React from "react";
-import { Button, Layout } from "@ui-kitten/components";
 import Screen from "../components/Screen";
 import { OngoingCard } from "../components/OngoingCard";
 import { LocationCard } from "../components/LocationCard";
