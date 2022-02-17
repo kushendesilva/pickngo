@@ -7,7 +7,7 @@
 
 <h3 align="left">Resources</h3>
 
-- 📱 Downloadable APK available <a href="https://github.com/kushenthimira/pickngo/releases/download/v0.3.0/pickngo.apk" target="blank">**here**</a>
+- 📱 Downloadable APK available <a href="https://github.com/kushenthimira/pickngo/releases/download/v1.0.0/pickngo.apk" target="blank">**here**</a>
 
 |                                                                   |                                                                   |                                                                   |
 | :---------------------------------------------------------------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |

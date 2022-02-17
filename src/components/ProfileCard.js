@@ -10,7 +10,13 @@ import {
 import { Pressable } from "react-native";
 import { ThemeContext } from "../configs/Theme";
 
-export const ProfileCard = ({ email, onPress, onEditPress, name }) => {
+export const ProfileCard = ({
+  email,
+  onPress,
+  onEditPress,
+  name,
+  addName = false,
+}) => {
   const themeContext = useContext(ThemeContext);
   const LogoutIcon = (props) => <Icon {...props} name="log-out" />;
   const theme = useTheme();
@@ -71,9 +77,23 @@ export const ProfileCard = ({ email, onPress, onEditPress, name }) => {
             </Layout>
           </Pressable>
           <Layout style={{ justifyContent: "center" }}>
-            <Text style={{ margin: "1%", fontWeight: "bold" }} category="h6">
-              {name}
-            </Text>
+            {addName == true ? (
+              <Button
+                style={{
+                  borderRadius: 5,
+                }}
+                status="basic"
+                size="tiny"
+                onPress={onEditPress}
+              >
+                Update Profile
+              </Button>
+            ) : (
+              <Text style={{ margin: "1%", fontWeight: "bold" }} category="h6">
+                {name}
+              </Text>
+            )}
+
             <Text style={{ margin: "1%" }} category="label">
               {email.charAt(0).toUpperCase() + email.slice(1)}
             </Text>

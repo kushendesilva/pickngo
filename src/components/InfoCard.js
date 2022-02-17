@@ -20,15 +20,23 @@ export const InfoCard = ({
         <Text category="h6" style={{ fontWeight: "bold" }}>
           #{id}
         </Text>
-        <Text category="s1">Pickup Location: {pickup}</Text>
-        <Text category="s1">Drop Location: {drop}</Text>
+        <Text category="s1" style={{ fontWeight: "bold", marginTop: 5 }}>
+          Pickup Location: <Text category="s1">{pickup}</Text>
+        </Text>
+        <Text category="s1" style={{ fontWeight: "bold", marginTop: 5 }}>
+          Drop Location: <Text category="s1">{drop}</Text>
+        </Text>
       </Layout>
     }
   >
     <Layout style={{ flexDirection: "row", justifyContent: "space-between" }}>
       <Layout>
-        <Text>{date}</Text>
-        <Text>{time}</Text>
+        <Text category="s1" style={{ fontWeight: "bold" }}>
+          Date: <Text category="s1">{date}</Text>
+        </Text>
+        <Text category="s1" style={{ fontWeight: "bold" }}>
+          Time: <Text category="s1">{time}</Text>
+        </Text>
       </Layout>
       <Layout style={{ flexDirection: "row" }}>
         <Button

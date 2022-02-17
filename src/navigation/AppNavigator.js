@@ -22,6 +22,7 @@ import Request from "../screens/Request";
 import TrackLocation from "../screens/TrackLocation";
 import ChangeLocation from "../screens/ChangeLocation";
 import Requests from "../screens/Requests";
+import OngoingRequests from "../screens/OngoingRequests";
 import Profile from "../screens/Profile";
 import Help from "../screens/Help";
 import Loading from "../screens/utils/Loading";
@@ -72,6 +73,7 @@ const Main = () => {
       <MainStack.Screen name="NewRequest" component={NewRequest} />
       <MainStack.Screen name="Confirmation" component={Confirmation} />
       <MainStack.Screen name="Ongoing" component={Ongoing} />
+      <MainStack.Screen name="OngoingRequests" component={OngoingRequests} />
       <MainStack.Screen name="PaymentMethods" component={PaymentMethods} />
       <MainStack.Screen name="NewPayment" component={NewPayment} />
       <MainStack.Screen name="Help" component={Help} />

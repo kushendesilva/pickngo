@@ -33,7 +33,12 @@ export default function ({ navigation }) {
   };
 
   return (
-    <Screen headerTitle="Requests">
+    <Screen
+      backAction={() => {
+        navigation.goBack();
+      }}
+      headerTitle={"Ongoing Deliveries"}
+    >
       <FlatList
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={getList} />
@@ -41,23 +46,7 @@ export default function ({ navigation }) {
         data={list}
         keyExtractor={(item) => `${item.id}`}
         renderItem={({ item }) =>
-          item.delivered == true ? (
-            <RequestCard
-              id={item.id}
-              date={item.date}
-              onPress={() => {
-                navigation.navigate("Request", {
-                  request: {
-                    id: item.id,
-                    pickAd: item.pickAd,
-                    dropAd: item.dropAd,
-                    date: item.date,
-                    time: item.time,
-                  },
-                });
-              }}
-            />
-          ) : (
+          item.delivered == false && (
             <RequestCard
               delivered={false}
               id={item.id}

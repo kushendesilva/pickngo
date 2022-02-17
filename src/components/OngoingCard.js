@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Text,
   Card,
@@ -8,7 +8,7 @@ import {
   Button,
 } from "@ui-kitten/components";
 
-export const OngoingCard = ({ id, onPress, style }) => {
+export const OngoingCard = ({ onPress, style }) => {
   const theme = useTheme();
   return (
     <Card
@@ -57,13 +57,7 @@ export const OngoingCard = ({ id, onPress, style }) => {
                   color: theme["color-info-default"],
                 }}
               >
-                Ongoing Delivery
-              </Text>
-              <Text
-                style={{ color: theme["color-info-default"] }}
-                category="label"
-              >
-                #{id}
+                Ongoing Deliveries
               </Text>
             </Layout>
           </Layout>

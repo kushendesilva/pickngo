@@ -6,12 +6,15 @@ import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { LocationCard } from "../components/LocationCard";
 import Screen from "../components/Screen";
 
-export default function ({ navigation }) {
+export default function ({ navigation, route }) {
+  const { request } = route.params;
   const [pickDate, setDate] = useState(new Date());
   const [pickTime, setTime] = useState(new Date());
   const [dateShow, setDateShow] = useState(true);
   const [timeShow, setTimeShow] = useState(false);
-  const [address, setAddress] = useState("Loading...");
+  const [address, setAddress] = useState(
+    "No.42, Vijithapura Rd, Sri Jayawardenepura Kotte"
+  );
   const date = pickDate.toLocaleDateString();
   const time = pickTime.toLocaleTimeString("en-GB").slice(0, -3);
 
@@ -62,16 +65,16 @@ export default function ({ navigation }) {
           provider={PROVIDER_GOOGLE}
           style={{ ...StyleSheet.absoluteFillObject }}
           initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
+            latitude: request.lat,
+            longitude: request.long,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
         >
           <Marker
             coordinate={{
-              latitude: 37.78825,
-              longitude: -122.4324,
+              latitude: request.lat,
+              longitude: request.long,
             }}
           />
         </MapView>
@@ -87,7 +90,21 @@ export default function ({ navigation }) {
           alignSelf: "center",
         }}
         onPress={() => {
-          navigation.navigate("Confirmation");
+          navigation.navigate("Confirmation", {
+            request: {
+              date,
+              time,
+              user: request.user,
+              pickAd: request.pickAd,
+              pickLat: request.pickLat,
+              pickLong: request.pickLong,
+              dropAd: request.pickAd,
+              dropLat: request.pickLat,
+              dropLong: request.pickLong,
+              lat: request.lat,
+              long: request.long,
+            },
+          });
         }}
       >
         Continue

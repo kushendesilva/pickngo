@@ -3,13 +3,13 @@
     "name": "Pick & Go",
     "slug": "pickngo",
     "owner": "kushenthimira",
-    "version": "0.3.0",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#262e48"
+      "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

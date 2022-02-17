@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 import { Button, Card, Layout, Text } from "@ui-kitten/components";
 import Screen from "../components/Screen";
 
-export default function ({ navigation }) {
+export default function ({ navigation, route }) {
+  const { request } = route.params;
   return (
     <Screen
       backAction={() => {
@@ -17,10 +18,14 @@ export default function ({ navigation }) {
         header={
           <Layout>
             <Text category="h6" style={{ fontWeight: "bold" }}>
-              #1052515
+              #{request.id}
             </Text>
-            <Text category="s1">Pickup Location: No.10, Colombo-07</Text>
-            <Text category="s1">Drop Location: No.42, Colombo-10</Text>
+            <Text category="s1" style={{ fontWeight: "bold", marginTop: 5 }}>
+              Pickup Location: <Text category="s1">{request.pickAd}</Text>
+            </Text>
+            <Text category="s1" style={{ fontWeight: "bold", marginTop: 5 }}>
+              Drop Location: <Text category="s1">{request.dropAd}</Text>
+            </Text>
           </Layout>
         }
       >
@@ -28,13 +33,26 @@ export default function ({ navigation }) {
           style={{ flexDirection: "row", justifyContent: "space-between" }}
         >
           <Layout>
-            <Text>02/02/2022</Text>
-            <Text>12:25</Text>
+            <Text category="s1" style={{ fontWeight: "bold" }}>
+              Date: <Text category="s1">{request.date}</Text>
+            </Text>
+            <Text category="s1" style={{ fontWeight: "bold" }}>
+              Time: <Text category="s1">{request.time}</Text>
+            </Text>
           </Layout>
           <Button
             status="primary"
             onPress={() => {
-              navigation.navigate("TrackLocation");
+              navigation.navigate("TrackLocation", {
+                marker: {
+                  pickLat: request.pickLat,
+                  pickLong: request.pickLong,
+                  dropLat: request.dropLat,
+                  dropLong: request.dropLong,
+                  lat: request.lat,
+                  long: request.long,
+                },
+              });
             }}
           >
             Track
