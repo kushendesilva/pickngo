@@ -3,6 +3,7 @@ import Screen from "../components/Screen";
 import { PaymentCard } from "../components/PaymentCard";
 import { Icon, Button } from "@ui-kitten/components";
 import { ThemeContext } from "../configs/Theme";
+import { LocationCard } from "../components/LocationCard";
 
 export default function ({ navigation }) {
   const themeContext = useContext(ThemeContext);
@@ -28,6 +29,13 @@ export default function ({ navigation }) {
         onPress={() => {
           navigation.navigate("NewPayment");
         }}
+      />
+      <LocationCard
+        vector
+        location="Default"
+        title="Cash on Delivery"
+        icon="cash-multiple"
+        btnText="Selected"
       />
       <PaymentCard type="mastercard" number="3045" />
       <PaymentCard type="visa" number="4215" />

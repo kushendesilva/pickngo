@@ -16,6 +16,7 @@ export const ProfileCard = ({
   onEditPress,
   name,
   addName = false,
+  staff = false,
 }) => {
   const themeContext = useContext(ThemeContext);
   const LogoutIcon = (props) => <Icon {...props} name="log-out" />;
@@ -35,47 +36,67 @@ export const ProfileCard = ({
             flexDirection: "row",
           }}
         >
-          <Pressable
-            onPress={onEditPress}
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              backgroundColor: theme["color-info-100"],
-              padding: 10,
-              borderRadius: 25,
-              elevation: 2,
-              marginRight: 15,
-            }}
-          >
-            <Icon
-              style={{ width: 40, height: 40 }}
-              fill={theme["color-info-default"]}
-              name="person"
-            />
-            <Layout
+          {staff == false ? (
+            <Pressable
+              onPress={onEditPress}
               style={{
-                backgroundColor:
-                  themeContext.theme == "light"
-                    ? theme["color-info-default"]
-                    : theme["color-info-400"],
-                padding: 5,
+                flexDirection: "row",
+                justifyContent: "space-evenly",
+                backgroundColor: theme["color-info-100"],
+                padding: 10,
                 borderRadius: 25,
                 elevation: 2,
-                position: "absolute",
-                right: -3,
-                top: -3,
+                marginRight: 15,
               }}
             >
               <Icon
+                style={{ width: 40, height: 40 }}
+                fill={theme["color-info-default"]}
+                name="person"
+              />
+              <Layout
                 style={{
-                  width: 15,
-                  height: 15,
+                  backgroundColor:
+                    themeContext.theme == "light"
+                      ? theme["color-info-default"]
+                      : theme["color-info-400"],
+                  padding: 5,
+                  borderRadius: 25,
+                  elevation: 2,
+                  position: "absolute",
+                  right: -3,
+                  top: -3,
                 }}
-                fill={theme["color-info-100"]}
-                name="edit-2"
+              >
+                <Icon
+                  style={{
+                    width: 15,
+                    height: 15,
+                  }}
+                  fill={theme["color-info-100"]}
+                  name="edit-2"
+                />
+              </Layout>
+            </Pressable>
+          ) : (
+            <Layout
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-evenly",
+                backgroundColor: theme["color-info-100"],
+                padding: 10,
+                borderRadius: 25,
+                elevation: 2,
+                marginRight: 15,
+              }}
+            >
+              <Icon
+                style={{ width: 40, height: 40 }}
+                fill={theme["color-info-default"]}
+                name="person"
               />
             </Layout>
-          </Pressable>
+          )}
           <Layout style={{ justifyContent: "center" }}>
             {addName == true ? (
               <Button
@@ -86,7 +107,7 @@ export const ProfileCard = ({
                 size="tiny"
                 onPress={onEditPress}
               >
-                Update Profile
+                Complete Profile
               </Button>
             ) : (
               <Text style={{ margin: "1%", fontWeight: "bold" }} category="h6">

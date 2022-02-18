@@ -3,7 +3,7 @@
     "name": "Pick & Go",
     "slug": "pickngo",
     "owner": "kushenthimira",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -20,7 +20,7 @@
       "permissions": ["LOCATION"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#262E48"
       },
       "config": {
         "googleMaps": { "apiKey": "AIzaSyD87ToWqo4Y8vIjlgURucGldvbD5h44l3k" }

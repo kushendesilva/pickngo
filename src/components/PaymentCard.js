@@ -14,7 +14,7 @@ export const PaymentCard = ({ type, number, onPress, style }) => {
   const themeContext = useContext(ThemeContext);
   const TrashIcon = (props) => <Icon {...props} name="trash-2" />;
   return (
-    <Card disabled style={{ marginHorizontal: "3%", marginVertical: "1%" }}>
+    <Card disabled style={{ marginHorizontal: "5%", marginVertical: "1%" }}>
       <Layout>
         <Layout
           style={

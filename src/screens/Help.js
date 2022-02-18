@@ -28,10 +28,10 @@ export default function ({ navigation }) {
   const handleGHPress = useCallback(async () => {
     await Linking.openURL("https://github.com/kushenthimira/posify/releases");
   }, []);
-  const FacebookIcon = (props) => <Icon {...props} name="facebook-outline" />;
-  const GoogleIcon = (props) => <Icon {...props} name="google-outline" />;
-  const TwitterIcon = (props) => <Icon {...props} name="twitter-outline" />;
-  const GithubIcon = (props) => <Icon {...props} name="github-outline" />;
+  const FacebookIcon = (props) => <Icon {...props} name="facebook" />;
+  const GoogleIcon = (props) => <Icon {...props} name="google" />;
+  const TwitterIcon = (props) => <Icon {...props} name="twitter" />;
+  const GithubIcon = (props) => <Icon {...props} name="github" />;
 
   return (
     <Screen

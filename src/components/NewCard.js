@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Text, Card, useTheme, Button } from "@ui-kitten/components";
 import { ThemeContext } from "../configs/Theme";
 
-export const NewCard = ({ onPress }) => {
+export const NewCard = ({ onPress, isProfile = false }) => {
   const themeContext = useContext(ThemeContext);
   const theme = useTheme();
   return (
@@ -37,12 +37,22 @@ export const NewCard = ({ onPress }) => {
         are ready to deliver fast and first-rate customer service.
       </Text>
       <Button
+        disabled={isProfile}
         onPress={onPress}
         style={{ borderRadius: 5, marginVertical: 20 }}
         status="control"
       >
         New Request
       </Button>
+      {isProfile && (
+        <Button
+          onPress={onPress}
+          style={{ borderRadius: 5, marginBottom: 20, marginTop: -10 }}
+          status="control"
+        >
+          Complete Profile
+        </Button>
+      )}
     </Card>
   );
 };

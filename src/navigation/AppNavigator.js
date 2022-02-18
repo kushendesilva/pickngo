@@ -13,6 +13,7 @@ import { AuthContext } from "../provider/AuthProvider";
 //Screens
 import Home from "../screens/Home";
 import NewRequest from "../screens/NewRequest";
+import NewRider from "../screens/NewRider";
 import Confirmation from "../screens/Confirmation";
 import Ongoing from "../screens/Ongoing";
 import PaymentMethods from "../screens/PaymentMethods";
@@ -71,6 +72,7 @@ const Main = () => {
     >
       <MainStack.Screen name="MainTabs" component={MainTabs} />
       <MainStack.Screen name="NewRequest" component={NewRequest} />
+      <MainStack.Screen name="NewRider" component={NewRider} />
       <MainStack.Screen name="Confirmation" component={Confirmation} />
       <MainStack.Screen name="Ongoing" component={Ongoing} />
       <MainStack.Screen name="OngoingRequests" component={OngoingRequests} />

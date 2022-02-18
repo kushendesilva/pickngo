@@ -57,12 +57,12 @@ export const OngoingCard = ({ onPress, style }) => {
                   color: theme["color-info-default"],
                 }}
               >
-                Ongoing Deliveries
+                Ongoing Requests
               </Text>
             </Layout>
           </Layout>
           <Button onPress={onPress} style={{ borderRadius: 20 }} status="info">
-            Track
+            Find
           </Button>
         </Layout>
       </Layout>

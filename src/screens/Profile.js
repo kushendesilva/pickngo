@@ -11,7 +11,7 @@ export default function ({ navigation }) {
   const db = getFirestore();
   const themeContext = useContext(ThemeContext);
 
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({ name: "", phone: "" });
 
   useEffect(() => {
     getNote();
@@ -23,34 +23,57 @@ export default function ({ navigation }) {
       const userData = docSnap.data();
       setUser(userData);
     } else {
-      const userData = null;
+      const userData = { name: "", phone: "" };
       setUser(userData);
     }
   };
 
   return (
     <Screen headerTitle="Profile">
-      {user.name == null || user.phone == null ? (
-        <ProfileCard
-          email={
-            auth.currentUser.email.charAt(0).toUpperCase() +
-            auth.currentUser.email.slice(1)
-          }
-          onPress={() => {
-            signOut(auth);
-          }}
-          onEditPress={() =>
-            navigation.navigate("ProfileInformation", {
-              user: {
-                email: auth.currentUser.email,
-                id: auth.currentUser.uid,
-                name: user.name,
-                phone: user.phone,
-              },
-            })
-          }
-          addName
-        />
+      {user.type == null ? (
+        user.name == "" || user.phone == "" ? (
+          <ProfileCard
+            email={
+              auth.currentUser.email.charAt(0).toUpperCase() +
+              auth.currentUser.email.slice(1)
+            }
+            onPress={() => {
+              signOut(auth);
+            }}
+            onEditPress={() =>
+              navigation.navigate("ProfileInformation", {
+                user: {
+                  email: auth.currentUser.email,
+                  id: auth.currentUser.uid,
+                  name: user.name,
+                  phone: user.phone,
+                },
+              })
+            }
+            addName
+          />
+        ) : (
+          <ProfileCard
+            email={
+              auth.currentUser.email.charAt(0).toUpperCase() +
+              auth.currentUser.email.slice(1)
+            }
+            onPress={() => {
+              signOut(auth);
+            }}
+            onEditPress={() =>
+              navigation.navigate("ProfileInformation", {
+                user: {
+                  name: user.name,
+                  phone: user.phone,
+                  email: auth.currentUser.email,
+                  id: auth.currentUser.uid,
+                },
+              })
+            }
+            name={user.name}
+          />
+        )
       ) : (
         <ProfileCard
           email={
@@ -71,16 +94,18 @@ export default function ({ navigation }) {
             })
           }
           name={user.name}
+          staff
         />
       )}
-
-      <NavButton
-        icon="credit-card"
-        title="Payment Methods"
-        onPress={() => {
-          navigation.navigate("PaymentMethods");
-        }}
-      />
+      {user.type == null && (
+        <NavButton
+          icon="credit-card"
+          title="Payment Methods"
+          onPress={() => {
+            navigation.navigate("PaymentMethods");
+          }}
+        />
+      )}
       <NavButton
         themeChanger
         icon={themeContext.theme == "dark" ? "sun" : "moon"}

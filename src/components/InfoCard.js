@@ -26,6 +26,9 @@ export const InfoCard = ({
         <Text category="s1" style={{ fontWeight: "bold", marginTop: 5 }}>
           Drop Location: <Text category="s1">{drop}</Text>
         </Text>
+        <Text category="s1" style={{ fontWeight: "bold", marginTop: 5 }}>
+          Payment Method: <Text category="s1">Cash on Delivery</Text>
+        </Text>
       </Layout>
     }
   >

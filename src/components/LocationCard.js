@@ -7,6 +7,7 @@ import {
   useTheme,
   Button,
 } from "@ui-kitten/components";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export const LocationCard = ({
   title = "Pickup Location",
@@ -14,6 +15,8 @@ export const LocationCard = ({
   onPress,
   style,
   icon = "pin",
+  btnText = "Change",
+  vector = false,
 }) => {
   const theme = useTheme();
   return (
@@ -49,11 +52,21 @@ export const LocationCard = ({
               backgroundColor: theme["color-info-100"],
             }}
           >
-            <Icon
-              style={{ width: 25, height: 25, marginRight: 25 }}
-              fill={theme["color-info-default"]}
-              name={icon}
-            />
+            {vector == false ? (
+              <Icon
+                style={{ width: 25, height: 25, marginRight: 25 }}
+                fill={theme["color-info-default"]}
+                name={icon}
+              />
+            ) : (
+              <MaterialCommunityIcons
+                style={{ marginRight: 25 }}
+                name={icon}
+                size={25}
+                color={theme["color-info-default"]}
+              />
+            )}
+
             <Layout
               style={{
                 justifyContent: "center",
@@ -78,7 +91,7 @@ export const LocationCard = ({
             </Layout>
           </Layout>
           <Button onPress={onPress} style={{ borderRadius: 20 }} status="info">
-            Change
+            {btnText}
           </Button>
         </Layout>
       </Layout>

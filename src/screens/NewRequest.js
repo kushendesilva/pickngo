@@ -95,6 +95,8 @@ export default function ({ navigation, route }) {
               date,
               time,
               user: request.user,
+              name: request.name,
+              phone: request.phone,
               pickAd: request.pickAd,
               pickLat: request.pickLat,
               pickLong: request.pickLong,

@@ -14,6 +14,8 @@ export default function ({ navigation, route }) {
       date: request.date,
       time: request.time,
       user: request.user,
+      name: request.name,
+      phone: request.phone,
       id,
       pickAd: request.pickAd,
       pickLat: request.pickLat,
@@ -24,6 +26,7 @@ export default function ({ navigation, route }) {
       lat: request.lat,
       long: request.long,
       delivered: false,
+      rider: null,
     });
     navigation.navigate("MainTabs");
   };
